@@ -40,7 +40,7 @@ def remove_last_memory():
 
 def shiro_response(response):
     
-    print("✅ Модель загружена на CPU")
+    print("ready to work")
     print("Shiro:",response)  
     tts.say(response)      
     tts.runAndWait()
@@ -62,7 +62,7 @@ with brain.chat_session(system_prompt=my_prompt):
                 if not user_text:
                     continue
 
-                print(f"👂 Shiro услышала: {user_text}")
+                print(f"Shiro hear: {user_text}")
 
                 if user_text.lower() in ["спи", "sleep"]:
                     tts.say('OK Nii good by')
