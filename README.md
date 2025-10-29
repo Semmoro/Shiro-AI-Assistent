@@ -4,7 +4,13 @@ Here, I’ll be posting all versions until she becomes stronger and has a solid 
 
 I’m still just a beginner programmer and don’t know much yet, but Shiro will be developed throughout my life — so stay tuned for updates! If you have any good ideas, feel free to share them. Next, I’ll explain what and how to add things so that Shiro works properly.
 
-SHIRO 0.2
+SHIRO 0.3
+
+Update: I change database from json file to sqlite3. 
+
+        NOW you don't need to add manual json file, code itself will generate a memory.db when you will run it for the first time.
+
+INSTRUCTION:
 
 After running git pull and importing the necessary modules:
 
@@ -12,15 +18,12 @@ After running git pull and importing the necessary modules:
   I use Phi-3-mini-4k-instruct-q4.gguf, but you can add your own model.
   Here’s the link where you can download it:
     https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf
-  Add the model to the root directory of the project or specify the path to it in the "Brain" variable inside brain.py.
-  
+  Add the model to the root directory of the project or specify the path to it in the variable "Brain"  inside brain.py.
+
     Note: If your PC is weak (or very weak), I recommend downloading the same version I’m using.
 
-2) Add a file named "Data_Base.json" to the root directory.
-  This file will store your dialogue history in JSON format.
-  (Later, I’ll make it so that Shiro can use this as her “memories” about you.)
 
-3) Add a file named "prompt.py" to the root directory.
+2) Add a file named "prompt.py" to the root directory.
   Inside it, create a variable called my_prompt, which will contain your own custom prompt describing Shiro’s behavior.
   She will then try to communicate with you in that style.
 

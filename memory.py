@@ -1,30 +1,36 @@
-import json
-import os 
+import sqlite3
 
-memories = "Data_Base.json" 
-memories_DATA = []
+def createTable():
+    db = sqlite3.connect("memory.db")
+    c = db.cursor()
 
+    c.execute("""CREATE TABLE IF NOT EXISTS dialog(
+        me text,
+        shiro text
+    )""")
+    db.commit()
+    db.close()
 
-if os.path.exists(memories):
-    with open(memories, "r") as f:
-        try:
-            memories_DATA = json.load(f)
+def readeTable():
+    db = sqlite3.connect("memory.db")
+    c = db.cursor()
 
-        except json.JSONDecodeError:
-                memories_DATA = []
-else:
-    memories_DATA = []
+    c.execute("SELECT * FROM dialog")
+    print(c.fetchall())
+    db.close()
 
-def remove_last_memory():
-    global memories_DATA
-    if memories_DATA:            
-        memories_DATA.pop()
-        with open(memories, "w") as f:
-            json.dump(memories_DATA, f, ensure_ascii= False, indent = 2)
+def updateTable(user_say, response):
+    db = sqlite3.connect("memory.db")
+    c = db.cursor()
 
-def add_memories(user_say, response):
-    global memories_DATA
+    c.execute("INSERT INTO dialog VALUES (?,?)", (user_say, response))
+    db.commit()
+    db.close()
 
-    memories_DATA.append({"Eu": user_say , "Shiro": response})
-    with open(memories, "w") as f:
-        json.dump(memories_DATA , f, ensure_ascii= False, indent = 2)
+def deleteTable():
+    db = sqlite3.connect("memory.db")
+    c = db.cursor()
+
+    c.execute("DELETE FROM dialog WHERE rowid = (SELECT MAX(rowid) FROM dialog)")
+    db.commit()
+    db.close()
