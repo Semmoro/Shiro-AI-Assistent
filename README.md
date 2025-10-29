@@ -6,9 +6,8 @@ I’m still just a beginner programmer and don’t know much yet, but Shiro will
 
 SHIRO 0.3
 
-Update: I change database from json file to sqlite3. 
-
-        NOW you don't need to add manual json file, code itself will generate a memory.db when you will run it for the first time.
+Update: 1) I change database from json file to sqlite3. 
+        2) NOW you don't need to add manual json file, code itself will generate a memory.db when you will run it for the first time.
 
 INSTRUCTION:
 
