@@ -7,24 +7,27 @@ import ears
 
 with Brain.chat_session(system_prompt=my_prompt):
 
+
     while True:
-        user_say = input("Eu:")
         createTable()
+
+        ears.listen()
+
             
-        if user_say == "sleep":
-            Voice.say('OK Nii good by')
+        if ears.intrebareeMea == "ассистент спи":
+            Voice.say('OK, до встречи')
             Voice.runAndWait()
             break
 
-        elif user_say == "remove last memory":
+        elif ears.intrebareeMea == "ассистент забудь об этом воспоминаний":
             deleteTable()
-            Voice.say('What, wich memory?')
+            Voice.say('что ты о чём?')
             Voice.runAndWait()
                 
         else:
-            response = Brain.generate(user_say, max_tokens = 10)  
+            response = Brain.generate(ears.intrebareeMea)  
             shiro_response(response)
-            updateTable(user_say, response)
+            updateTable(ears.intrebareeMea, response)
 
 
 
